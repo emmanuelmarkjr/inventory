@@ -1,0 +1,86 @@
+{% load static %}
+{% load i18n %}
+
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% trans 'Smoothie Junkie Inventory' %}{% endblock title %}</title>
+	    <!-- Core CSS - Include with every page -->
+        <link href='https://fonts.googleapis.com/css?family=Lora:400italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+	    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+        <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+    <div class="container">
+	<nav class="navbar navbar-default" style="background-color: #ffffff">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">Smoothie Junkie Inventory</a>
+
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+	            <li class="divider"></li>
+	            <li><a href="{% url 'change_password' %}">Change Password</a></li>
+	            <li class="divider"></li>
+	            <li><a href="{% url 'logout' %}">Logout</a></li>
+	          </ul>
+	        </li>
+
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+    </div>
+    {%if user.is_authenticated %}
+    <div class="container">
+        {% include 'search.html' %}
+    </div>
+    {% endif %}
+        {% block content %}
+        {% endblock %}
+
+	    <!-- Core Scripts - Include with every page -->
+	    <!--<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
+	    <script src = "{% static 'js/jquery-2.2.1.min.js' %}"></script>
+	    <script src = "{% static 'js/bootstrap.min.js' %}"></script>
+        <script src ="{% static 'js/custom.js' %}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#spinner').hide();
+                $('#searchSubmit').click( function() {
+                    q = $('#q').val();
+                    $( '#results' ).html( '&nbsp;' ).load( '{% url 'demo_user_search' %}?q=' + q );
+                });
+            });
+
+            $( document ).ajaxStart( function() {
+                $( '#spinner' ).show();
+            }).ajaxStop( function() {
+                $( '#spinner' ).hide();
+            });
+        </script>
+	    {% block javascript %}
+	    {% endblock %}
+	</body>
+</html>

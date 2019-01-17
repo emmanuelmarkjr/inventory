@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load humanize %}
+{% load mytags %}
+{% block title %}Inventory - All Delivery Person Details{% endblock title %}
+{% block content %}
+
+    <div class="container">
+    {% include 'side_menu.html' %}
+        <div class="col-md-9">
+            {% if messages %}
+                <ul class="list-unstyled messages">
+                      {% for message in messages %}
+                        {% get_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+                        <center class="alert alert-{{ alert_tag }} alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            {{ message }}
+                        </center>
+                      {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    <center><h4>All Delivery Person Cash Details</h4><!--<form action="" method="get">
+                                                                            <label for="from">Start Date</label>
+                                                                                <input type="text" name="start_date">
+                                                                            <label for="to">End Date &nbsp;</label>
+                                                                                <input type="text" name="end_date">
+                                                                            <input type="submit" class="btn-small btn success" value="Submit">
+                                                                        </form>-->
+    </center>
+        {% if orders %}
+            <div class="col-md-6">
+                <table class="table table-striped" style="background-color: #ffffff">
+                    <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Delivery Person Name</th>
+                          <th>Count</th>
+                          <th>Total</th>
+                          <th>Date Added</th>
+
+                          <!--<th>Action</th>-->
+                      </tr>
+                    </thead>
+                            <tbody>
+                            {% for order in orderss %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.d_person }}</td>
+                                    <td>{{ order.count }}</td>
+                                    <td>{{ order.total }}</td>
+                                    <td>{{ order.date_added }}</td>
+                                    <!--<td><a href="#" class="btn btn-warning btn-xs">View</a>-->
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if orderss.has_previous %}
+                            <a href="?page={{ orderss.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ orderss.number }} of {{ orderss.paginator.num_pages }}.
+                        </span>
+
+                        {% if orderss.has_next %}
+                            <a href="?page={{ orderss.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <table class="table table-striped" style="background-color: #ffffff">
+                    <thead>
+                      <tr>
+                          <!--<th>ID</th>-->
+                          <th>Delivery Person Name</th>
+                          <!--<th>Count</th>-->
+                          <th>Total</th>
+                          <!--<th>Action</th>-->
+                      </tr>
+                    </thead>
+                            <tbody>
+                            <tr>
+                            <td>Emeka</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ emeka_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Alex</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ alex_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Yinka</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ yinka_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Collins</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ collins_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Segun</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ segun_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Richard</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ richard_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Samson</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ samson_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Emmanuel</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ emmanuel_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            <tr>
+                            <td>Justine</td>
+                            <!--<td>{{ corders_bunmi|length }}</td>-->
+                            <td>₦{{ justine_cash.total__sum|intcomma }}</td>
+                            </tr>
+                            </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if orderss.has_previous %}
+                            <a href="?page={{ orderss.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ orderss.number }} of {{ orderss.paginator.num_pages }}.
+                        </span>
+
+                        {% if orderss.has_next %}
+                            <a href="?page={{ orderss.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-danger col-sm-9">
+                <center><p><strong>Oops!!!....Sorry</strong> No Details At The Moment, You can Check Back Some Other Time</p></center>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

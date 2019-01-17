@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load mytags %}
+{% block title %}Inventory - New Delivery Person Charges{% endblock title %}
+{% block content %}
+
+    <div class="container">
+    {% include 'side_menu.html' %}
+    <center><h4>New Delivery Person Charges</h4></center>
+        <div class="col-sm-8">
+            {% if messages %}
+                <ul class="list-unstyled messages">
+                      {% for message in messages %}
+                        {% get_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+                        <center class="alert alert-{{ alert_tag }}">{{ message }}</center>
+                      {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="col-sm-9">
+        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    Delivery Person's Name:
+                                    {% render_field form.d_person class="form-control" placeholder=form.d_person.label %}
+                                    {{ form.d_person.errors }}
+                                </div>
+                                <div class="form-group">
+                                    Initial Capital:
+                                    {% render_field form.capital class="form-control" placeholder=form.capital.label %}
+                                    {{ form.capital.errors }}
+                                </div>
+                                <div class="form-group">
+                                    Commission:
+                                    {% render_field form.commission class="form-control" placeholder=form.commission.label %}
+                                    {{ form.commission.errors }}
+                                </div>
+                                <div class="form-group">
+                                    Incentives:
+                                    {% render_field form.incentive class="form-control" placeholder=form.incentive.label %}
+                                    {{ form.incentive.errors }}
+                                </div>
+                                <div class="form-group">
+                                    Expenses:
+                                    {% render_field form.expenses class="form-control" placeholder=form.expenses.label %}
+                                    {{ form.expenses.errors }}
+                                </div>
+                                <div class="form-group">
+                                    Next Capital:
+                                    {% render_field form.next_capital class="form-control" placeholder=form.next_capital.label %}
+                                    {{ form.next_capital.errors }}
+                                </div>
+                            </div>
+                           <div class="col-sm-12">
+                                 <center><input class="btn btn-lg btn-success" type="submit" value="Submit" /></center>
+                                        <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                        </form>
+        </div>
+    </div>
+{% endblock content %}

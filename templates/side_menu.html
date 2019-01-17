@@ -1,0 +1,86 @@
+<div class="col-sm-3">
+        <center><h4>Dashboard Control</h4></center>
+          <div class="list-group">
+              {% if is_entry or request.user.is_superuser %}
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">New Customer Order</a>
+                    <div class="dropdown-content">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="{% url 'new_order' category=category.name|cut:" "|lower id=category.id %}">{{ category.name|lower }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if is_entry or is_vieworders or request.user.is_staff %}
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">Orders</a>
+                    <div class="dropdown-content">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="{% url 'orders' category=category.name|cut:" "|lower id=category.id %}">{{ category.name|lower }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if is_orderstatus or request.user.is_superuser %}
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">Delivered Orders</a>
+                    <div class="dropdown-content">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="{% url 'delivered_orders' category=category.name|cut:" "|lower id=category.id %}">{{ category.name|lower }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">Undelivered Orders</a>
+                    <div class="dropdown-content">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="{% url 'undelivered_orders' category=category.name|cut:" "|lower id=category.id %}">{{ category.name|lower }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if is_stock or request.user.is_staff or request.user.is_superuser %}
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">Confirmed Orders</a>
+                    <div class="dropdown-content">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="{% url 'confirmed_orders' category=category.name|cut:" "|lower id=category.id %}">{{ category.name|lower }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if request.user.is_superuser or request.user.is_staff %}
+                <div class="dropdown">
+                  <a href="#" class="list-group-item">Stocks</a>
+                    <div class="dropdown-content">
+                                <a href="{% url 'new_stock' %}">New Stock Entry</a>
+                                <a href="{% url 'all_stocks' %}">All Stocks</a>
+                    </div>
+                </div>
+                {%endif%}
+                {% if is_dperson or request.user.is_superuser or request.user.is_staff %}
+                <!--<div class="dropdown">
+                  <a href="#" class="list-group-item">Delivery Persons</a>
+                    <div class="dropdown-content">
+                        {% if request.user.is_superuser or request.user.is_staff %}
+                        <a href="{% url 'delivery_person_charges' %}" class="list-group-item">Add Charges</a>
+                        <a href="{% url 'all_delivery_person_charges' %}" class="list-group-item">All Delivery Person Details</a>
+                        {% endif %}
+                        <a href="{% url 'delivery_person_cash' %}" class="list-group-item">Add Cash</a>
+                        <a href="{% url 'all_delivery_person_cash' %}" class="list-group-item">All Delivery Person Cash Details</a>
+                    </div>
+                </div>-->
+                {%endif%}
+                <a href="#" class="list-group-item">Others</a>
+          </div>
+</div>

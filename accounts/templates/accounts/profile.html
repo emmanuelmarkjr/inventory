@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load mytags %}
+{% block title %}Inventory - Edit Profile{% endblock title %}
+{% block content %}
+    <div class="container">
+    <!--<div class="col-sm-3">
+        <h5>Current Profile Picture:</h5>
+        {% if user.userprofile.picture.url != "" %}
+            <img src="{{ user.userprofile.picture.url }}" width = "150" height = "150" style="border-radius: 50%"  />
+        {% else %}
+            <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" width = "150" height = "150" style="border-radius: 50%" />
+        {% endif %}
+    </div>-->
+                <div class="form-signin">
+                    {% if messages %}
+                      <ul class="list-unstyled messages">
+                      {% for message in messages %}
+                        {% get_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+                        <center class="alert alert-{{ alert_tag }}">{{ message }}</center>
+                      {% endfor %}
+                      </ul>
+                    {% endif %}
+                    <center><h4>Edit Your Profile</h4></center>
+                        <form method="post" action="{% url 'edit_profile' %}" class="form-signin" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% render_field form.full_name class="form-control" placeholder=form.full_name.label %}
+                                {{ form.full_name.errors }}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.email class="form-control" placeholder=form.email.label %}
+                                {{ form.email.errors }}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.phone class="form-control" placeholder=form.phone.label %}
+                                {{ form.phone.errors }}
+                            </div>
+                            <div class="form-group">
+                                {% render_field form.address class="form-control" placeholder=form.address.label rows="3" cols="4" %}
+                                {{ form.address.errors }}
+                            </div>
+                            <!--<div class="form-group">
+                                {% render_field form.picture class="form-control" placeholder=form.picture.label %}
+                                {{ form.picture.errors }}
+                            </div>-->
+                            <div class="form-group">
+                                <center><input class="btn btn-lg btn-info btn-block" type="submit" value="Edit Profile" /></center>
+                                        <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                        </form>
+                </div>
+    </div>
+{% endblock %}

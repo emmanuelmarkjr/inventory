@@ -1,0 +1,1053 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %}Inventory - Welcome{% endblock title %}
+{% block content %}
+     <div class="container">
+    <div class="alert alert-info">
+        <h4>{% if user.userprofile.picture.url != "" %}
+            <img src="{{ user.userprofile.picture.url }}" width = "60" height = "60" style="border-radius: 50%"  />
+        {% else %}
+            <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" width = "60" height = "60" style="border-radius: 50%" />
+        {% endif %}&nbsp&nbsp<strong>Hello! {% if request.user.is_superuser %}JBabs {% else %}{{ request.user|capfirst }},{% endif %} </strong> <!--{{ request.user }} -->
+        &nbsp&nbspWelcome to your Dashboard<br><h5 style="color:red">
+    </div>
+            {% include 'side_menu.html' %}
+        <center><h4>Inventory Overview</h4></center>
+            <ul class="nav nav-tabs" style="border-bottom: none">
+                <li class="active"><a data-toggle="tab" href="#home">Today</a></li>
+                <li><a data-toggle="tab" href="#menu1">Yesterday</a></li>
+                <li><a data-toggle="tab" href="#menu2">Week</a></li>
+                <li><a data-toggle="tab" href="#menu3">Month</a></li>
+                <li><a data-toggle="tab" href="#menu4">Year</a></li>
+            </ul>
+                <div class="tab-content " style="margin-top: -250px; margin-right: -300px">
+                <div id="home" class="tab-pane fade in active">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                        <div class="col-xs-12 text-right">
+                                            <div class="small">GINGER ME</div>
+                                            <div class="small">{{ orders_slimtea|length }} New Orders</div>
+                                            <div class="small">₦{{ orders_ptv_slimtea.product_value__sum|intcomma }} Product Value</div>
+                                            {% if request.user.is_active and request.user.is_staff %}
+                                                <div class="small">{{ orders_con_slimtea|length }} Confirmed Orders</div>
+                                                {% if request.user.is_active and request.user.is_superuser %}
+                                                    <div class="small">₦{{ orders_amt_slimtea.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                </div>
+                            </div>
+                                <a href="{% url 'today_orders' category='slimtea' id=1 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-green">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                           <div class="col-xs-12 text-right">
+                                                <div class="small">COCOA MY KOKO</div>
+                                                <div class="small">{{ orders_waist|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_waist.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_waist|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_waist.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='waisttrainer' id=2 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-yellow">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">GREEN WITH ENVY</div>
+                                                <div class="small">{{ orders_mecran|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_mecran.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_mecran|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_mecran.amount_paid__sum|intcomma}} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='mecran' id=3 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-red">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">INIGHE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">LA VIDA LOCA</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">NUTTY BY NATURE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">TRIPLE THREAT</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+     </div>
+                <div id="menu1" class="tab-pane fade">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">GINGER ME</div>
+                                                <div class="small">{{ orders_slimtea_y|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_slimtea_y.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_slimtea_y|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_slimtea_y.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                                    <a href="{% url 'yesterday_orders' category='slimtea' id=1 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">COCOA WITH KOKO</div>
+                                                <div class="small">{{ orders_waist_y|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_waist_y.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_waist_y|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                 <div class="small">₦{{ orders_amt_waist_y.amount_paid__sum|intcomma}} Amount Paid</div>
+                                                 {% endif %}
+                                                  {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'yesterday_orders' category='waisttrainer' id=2 %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">GREEN WITH ENVY</div>
+                                                <div class="small">{{ orders_mecran_y|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_mecran_y.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_mecran_y|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_mecran_y.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'yesterday_orders' category='mecran' id=3 %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">INIGHE</div>
+                                                <div class="small">{{ orders_flattummy_y|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy_y.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy_y|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy_y.amount_paid__sum|intcomma}} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'yesterday_orders' category='flattummy' id=4 %}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">LA VIDA LOCA</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">NUTTY BY NATURE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">TRIPLE THREAT</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">GINGER ME</div>
+                                                <div class="small">{{ orders_slimtea_w|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_slimtea_w.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_slimtea_w|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_slimtea_w.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">COCOA MY KOKO</div>
+                                                <div class="small">{{ orders_waist_w|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_waist_w.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_waist_w|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                 <div class="small">₦{{ orders_amt_waist_w.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                 {% endif %}
+                                                  {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">GREEN WITH ENVY</div>
+                                                <div class="small">{{ orders_mecran_w|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_mecran_w.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_mecran_w|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_mecran_w.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">INIGHE</div>
+                                                <div class="small">{{ orders_flattummy_w|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy_w.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy_w|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy_w.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">LA VIDA LOCA</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">NUTTY BY NATURE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">TRIPLE THREAT</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                     <div class="col-xs-12 text-right">
+                                                <div class="small">GINGER ME</div>
+                                                <div class="small">{{ orders_slimtea_m|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_slimtea_m.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_slimtea_m|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_slimtea_m.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">COCOA MY KOKO</div>
+                                                <div class="small">{{ orders_waist_m|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_waist_m.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_waist_m|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                 <div class="small">₦{{ orders_amt_waist_m.amount_paid__sum|intcomma}} Amount Paid</div>
+                                                 {% endif %}
+                                                  {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">GREEN WITH ENVY</div>
+                                                <div class="small">{{ orders_mecran_m|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_mecran_m.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_mecran_m|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_mecran_m.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="" />
+                                    </div>
+                                    <div class="col-xs-12 text-right">
+                                                <div class="small">INIGHE</div>
+                                                <div class="small">{{ orders_flattummy_m|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy_m.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy_m|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy_m.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">LA VIDA LOCA</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">NUTTY BY NATURE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">TRIPLE THREAT</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                </div>
+                <div id="menu4" class="tab-pane fade">
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                             <div class="col-xs-12 text-right">
+                                                <div class="small">GINGER ME</div>
+                                                <div class="small">{{ orders_slimtea_year|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_slimtea_year.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_slimtea_year|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_slimtea_year.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-green">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">COCOA MY KOKO</div>
+                                                <div class="small">{{ orders_waist_year|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_waist_year.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_waist_year|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                 <div class="small">₦{{ orders_amt_waist_year.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                 {% endif %}
+                                                  {% endif %}
+                                    </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-yellow">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">GREEN WITH ENVY</div>
+                                                <div class="small">{{ orders_mecran_year|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_mecran_year.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_mecran_year|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_mecran_year.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-red">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                           <div class="col-xs-12 text-right">
+                                                <div class="small">INIGHE</div>
+                                                <div class="small">{{ orders_flattummy_year|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy_year.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy_year|length }} Confirmed Orders</div>
+                                                 {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy_year.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                   {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">LA VIDA LOCA</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">NUTTY BY NATURE</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-6">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="" />
+                                            </div>
+                                            <div class="col-xs-12 text-right">
+                                                <div class="small">TRIPLE THREAT</div>
+                                                <div class="small">{{ orders_flattummy|length }} New Orders</div>
+                                                <div class="small">₦{{ orders_ptv_flattummy.product_value__sum|intcomma }} Product Value</div>
+                                                {% if request.user.is_active and request.user.is_staff %}
+                                                 <div class="small">{{ orders_con_flattummy|length }} Confirmed Orders</div>
+                                                  {% if request.user.is_active and request.user.is_superuser %}
+                                                  <div class="small">₦{{ orders_amt_flattummy.amount_paid__sum|intcomma }} Amount Paid</div>
+                                                  {% endif %}
+                                                  {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'today_orders' category='flattummy' id=4 %}">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">View Details</span>
+                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+        </div>
+         </div>
+     </div>
+     </div>
+{% endblock %}

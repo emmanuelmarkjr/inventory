@@ -1,0 +1,2783 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mytags %}
+{% load humanize %}
+{% block title %}Inventory - Daily Orders{% endblock title %}
+{% block content %}
+    <div class="container">
+    {% include 'side_menu.html' %}
+    <center><h4>{{ category|capfirst }} - Today's Orders</h4></center>
+            <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_Jakande.product_value__sum|intcomma != "None" %}
+                          <th>Jakande</th>
+                          {%endif%}
+                          {% if t_orders_Sangotedo.product_value__sum|intcomma != "None" %}
+                            <th>Sangotedo</th>
+                            {%endif%}
+                            {% if t_orders_Eleko.product_value__sum|intcomma != "None" %}
+                            <th>Eleko</th>
+                            {% endif %}
+                            {% if t_orders_Ajah.product_value__sum|intcomma != "None" %}
+                            <th>Ajah</th>
+                            {% endif %}
+                            {% if t_orders_Ogba.product_value__sum|intcomma != "None" %}
+                            <th>Ogba</th>
+                            {% endif %}
+                            {% if t_orders_Festac.product_value__sum|intcomma != "None" %}
+                            <th>Festac</th>
+                            {% endif %}
+                            {% if t_orders_Aguda.product_value__sum|intcomma != "None" %}
+                            <th>Aguda/Surulere</th>
+                            {% endif %}
+                            {% if t_orders_Ketu.product_value__sum|intcomma != "None" %}
+                           <th>Ketu</th>
+                           {% endif %}
+                           {% if t_orders_VI.product_value__sum|intcomma != "None" %}
+                            <th>VI</th>
+                            {% endif %}
+                            {% if t_orders_Ikotun.product_value__sum|intcomma != "None" %}
+                            <th>Ikotun</th>
+                            {% endif %}
+                            {% if t_orders_Oshodi.product_value__sum|intcomma != "None" %}
+                            <th>Oshodi</th>
+                            {% endif %}
+                            {% if t_orders_Ikeja.product_value__sum|intcomma != "None" %}
+                            <th>Ikeja</th>
+                            {% endif %}
+                            {% if t_orders_Lekki.product_value__sum|intcomma != "None" %}
+                           <th>Lekki</th>
+                           {% endif %}
+                           {% if t_orders_Apapa.product_value__sum|intcomma != "None" %}
+                            <th>Apapa</th>
+                            {% endif %}
+
+                      </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_Jakande.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Jakande.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Sangotedo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Sangotedo.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_Eleko.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Eleko.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_Ajah.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Ajah.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_Ogba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Ogba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Festac.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Festac.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Aguda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Aguda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Ketu.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Ketu.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_VI.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_VI.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Ikotun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Ikotun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Oshodi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Oshodi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Ikeja.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Ikeja.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Lekki.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Lekki.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_Apapa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_Apapa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+            <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_abia.product_value__sum|intcomma != "None" %}
+                          <th>Abia</th>
+                          {%endif%}
+                          {% if t_orders_adamawa.product_value__sum|intcomma != "None" %}
+                            <th>Adamawa</th>
+                            {%endif%}
+                            {% if t_orders_anambra.product_value__sum|intcomma != "None" %}
+                            <th>Anambra</th>
+                            {% endif %}
+                            {% if t_orders_akwa_ibom.product_value__sum|intcomma != "None" %}
+                            <th>Akwa Ibom</th>
+                            {% endif %}
+                            {% if t_orders_bauchi.product_value__sum|intcomma != "None" %}
+                            <th>Bauchi</th>
+                            {% endif %}
+                            {% if t_orders_bayelsa.product_value__sum|intcomma != "None" %}
+                            <th>Bayelsa</th>
+                            {% endif %}
+                            {% if t_orders_benue.product_value__sum|intcomma != "None" %}
+                            <th>Benue</th>
+                            {% endif %}
+                            {% if t_orders_borno.product_value__sum|intcomma != "None" %}
+                           <th>Borno</th>
+                           {% endif %}
+                           {% if t_orders_cross_river.product_value__sum|intcomma != "None" %}
+                            <th>Cross River</th>
+                            {% endif %}
+
+                      </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_abia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_abia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_adamawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_adamawa.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_anambra.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_anambra.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_akwa_ibom.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_akwa_ibom.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if t_orders_bauchi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_bauchi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_bayelsa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_bayelsa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_benue.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_benue.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_borno.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_borno.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_cross_river.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_cross_river.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>{% if t_orders_delta.product_value__sum|intcomma != "None" %}
+                          <th>Delta</th>
+                          {% endif %}
+                          {% if t_orders_ebonyi.product_value__sum|intcomma != "None" %}
+                            <th>Ebonyi</th>
+                            {% endif %}
+                            {% if t_orders_enugu.product_value__sum|intcomma != "None" %}
+                            <th>Enugu</th>
+                            {% endif %}
+                            {% if t_orders_edo.product_value__sum|intcomma != "None" %}
+                            <th>Edo</th>
+                            {% endif %}
+                            {% if t_orders_ekiti.product_value__sum|intcomma != "None" %}
+                            <th>Ekiti</th>
+                            {% endif %}
+                            {% if t_orders_gombe.product_value__sum|intcomma != "None" %}
+                            <th>Gombe</th>
+                            {% endif %}
+                            {% if t_orders_imo.product_value__sum|intcomma != "None" %}
+                            <th>Imo</th>
+                            {% endif %}
+                            {% if t_orders_jigawa.product_value__sum|intcomma != "None" %}
+                            <th>Jigawa</th>
+                            {% endif %}
+                            {% if t_orders_kaduna.product_value__sum|intcomma != "None" %}
+                            <th>Kaduna</th>
+                            {% endif %}
+                             </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_delta.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_delta.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ebonyi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ebonyi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_enugu.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_enugu.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_edo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_edo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ekiti.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ekiti.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_gombe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_gombe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_imo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_imo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_jigawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_jigawa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kaduna.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kaduna.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                 <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_kano.product_value__sum|intcomma != "None" %}
+                           <th>Kano</th>
+                           {% endif %}
+                           {% if t_orders_katsina.product_value__sum|intcomma != "None" %}
+                           <th> Katsina</th>
+                           {% endif %}
+                           {% if t_orders_kebbi.product_value__sum|intcomma != "None" %}
+                            <th>Kebbi</th>
+                            {% endif %}
+                            {% if t_orders_kogi.product_value__sum|intcomma != "None" %}
+                            <th>Kogi</th>
+                            {% endif %}
+                            {% if t_orders_kwara.product_value__sum|intcomma != "None" %}
+                           <th> Kwara</th>
+                           {% endif %}
+                           {% if t_orders_lagos.product_value__sum|intcomma != "None" %}
+                            <th>Lagos</th>
+                            {% endif %}
+                            {% if t_orders_nasarawa.product_value__sum|intcomma != "None" %}
+                            <th>Nasarawa</th>
+                            {% endif %}
+                            {% if t_orders_niger.product_value__sum|intcomma != "None" %}
+                            <th>Niger</th>
+                            {% endif %}
+                            {% if t_orders_ogun.product_value__sum|intcomma != "None" %}
+                            <th>Ogun</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_kano.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kano.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_katsina.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_katsina.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kebbi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kebbi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kogi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kogi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kwara.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kwara.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_lagos.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_lagos.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_nasarawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_nasarawa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_niger.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_niger.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ogun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ogun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_ondo.product_value__sum|intcomma != "None" %}
+                          <th>Ondo</th>
+                          {% endif %}
+                          {% if t_orders_osun.product_value__sum|intcomma != "None" %}
+                            <th>Osun</th>
+                            {% endif %}
+                          {% if t_orders_oyo.product_value__sum|intcomma != "None" %}
+                            <th>Oyo</th>
+                            {% endif %}
+                          {% if t_orders_plateau.product_value__sum|intcomma != "None" %}
+                           <th>Plateau</th>
+                           {% endif %}
+                          {% if t_orders_rivers.product_value__sum|intcomma != "None" %}
+                            <th>Rivers</th>
+                            {% endif %}
+                          {% if t_orders_sokoto.product_value__sum|intcomma != "None" %}
+                            <th>Sokoto</th>
+                            {% endif %}
+                          {% if t_orders_taraba.product_value__sum|intcomma != "None" %}
+                            <th>Taraba</th>
+                            {% endif %}
+                          {% if t_orders_yobe.product_value__sum|intcomma != "None" %}
+                            <th>Yobe</th>
+                            {% endif %}
+                          {% if t_orders_zamfara.product_value__sum|intcomma != "None" %}
+                           <th> Zamfara</th>
+                           {% endif %}
+                          {% if t_orders_abuja.product_value__sum|intcomma != "None" %}
+                           <th>Abuja</th>
+                           {% endif %}
+                           </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_ondo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ondo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_osun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_osun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_oyo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_oyo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_plateau.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_plateau.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_rivers.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_rivers.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_sokoto.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_sokoto.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_taraba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_taraba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_yobe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_yobe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_zamfara.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_zamfara.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_abuja.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_abuja.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9" style="padding-left:240px">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_spain.product_value__sum|intcomma != "None" %}
+                           <th>Spain</th>
+                           {% endif %}
+                           {% if t_orders_usa.product_value__sum|intcomma != "None" %}
+                           <th> USA</th>
+                           {% endif %}
+                           {% if t_orders_uk.product_value__sum|intcomma != "None" %}
+                            <th>UK</th>
+                            {% endif %}
+                            {% if t_orders_ghana.product_value__sum|intcomma != "None" %}
+                            <th>Ghana</th>
+                            {% endif %}
+                            {% if t_orders_canada.product_value__sum|intcomma != "None" %}
+                           <th> Canada</th>
+                           {% endif %}
+                           {% if t_orders_france.product_value__sum|intcomma != "None" %}
+                            <th>France</th>
+                            {% endif %}
+                           {% if t_orders_germany.product_value__sum|intcomma != "None" %}
+                            <th>Germany</th>
+                            {% endif %}
+                           {% if t_orders_italy.product_value__sum|intcomma != "None" %}
+                            <th>Italy</th>
+                            {% endif %}
+                           {% if t_orders_liberia.product_value__sum|intcomma != "None" %}
+                            <th>Liberia</th>
+                            {% endif %}
+                           {% if t_orders_saudi.product_value__sum|intcomma != "None" %}
+                            <th>Saudi Arabia</th>
+                            {% endif %}
+                           {% if t_orders_south.product_value__sum|intcomma != "None" %}
+                            <th>South Africa</th>
+                            {% endif %}
+                           {% if t_orders_switzerland.product_value__sum|intcomma != "None" %}
+                            <th>Switzerland</th>
+                            {% endif %}
+                            {% if t_orders_turkey.product_value__sum|intcomma != "None" %}
+                            <th>Turkey</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_spain.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_spain.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_usa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_usa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_uk.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_uk.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ghana.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ghana.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_canada.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_canada.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_france.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_france.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_germany.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_germany.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_italy.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_italy.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_liberia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_liberia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_saudi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_saudi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_south.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_south.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_switzerland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_switzerland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_turkey.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_turkey.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_zimbabwe.product_value__sum|intcomma != "None" %}
+                           <th>Zimbabwe</th>
+                           {% endif %}
+                           {% if t_orders_zambia.product_value__sum|intcomma != "None" %}
+                           <th> Zambia</th>
+                           {% endif %}
+                           {% if t_orders_yemen.product_value__sum|intcomma != "None" %}
+                            <th>Yemen</th>
+                            {% endif %}
+                            {% if t_orders_venezuela.product_value__sum|intcomma != "None" %}
+                            <th>Venezuela</th>
+                            {% endif %}
+                            {% if t_orders_uzbekistan.product_value__sum|intcomma != "None" %}
+                           <th> Uzbekistan</th>
+                           {% endif %}
+                           {% if t_orders_uruguay.product_value__sum|intcomma != "None" %}
+                            <th>Uruguay</th>
+                            {% endif %}
+                            {% if t_orders_uae.product_value__sum|intcomma != "None" %}
+                            <th>UAE</th>
+                            {% endif %}
+                            {% if t_orders_ukraine.product_value__sum|intcomma != "None" %}
+                            <th>Ukraine</th>
+                            {% endif %}
+                            {% if t_orders_uganda.product_value__sum|intcomma != "None" %}
+                            <th>Uganda</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_zimbabwe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_zimbabwe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_zambia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_zambia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_yemen.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_yemen.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_venezuela.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_venezuela.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_uzbekistan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_uzbekistan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_uruguay.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_uruguay.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_uae.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_uae.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ukraine.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ukraine.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_uganda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_uganda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_tunisia.product_value__sum|intcomma != "None" %}
+                           <th>tunisia</th>
+                           {% endif %}
+                           {% if t_orders_trinidad.product_value__sum|intcomma != "None" %}
+                           <th> trinidad</th>
+                           {% endif %}
+                           {% if t_orders_togo.product_value__sum|intcomma != "None" %}
+                            <th>togo</th>
+                            {% endif %}
+                           {% if t_orders_thailand.product_value__sum|intcomma != "None" %}
+                            <th>thailand</th>
+                            {% endif %}
+                           {% if t_orders_tanzania.product_value__sum|intcomma != "None" %}
+                           <th> tanzania</th>
+                           {% endif %}
+                           {% if t_orders_taiwan.product_value__sum|intcomma != "None" %}
+                            <th>taiwan</th>
+                            {% endif %}
+                           {% if t_orders_sweden.product_value__sum|intcomma != "None" %}
+                            <th>sweden</th>
+                            {% endif %}
+                           {% if t_orders_swaziland.product_value__sum|intcomma != "None" %}
+                            <th>swaziland</th>
+                            {% endif %}
+                           {% if t_orders_sudan.product_value__sum|intcomma != "None" %}
+                            <th>sudan</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_tunisia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_tunisia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_trinidad.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_trinidad.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_togo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_togo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_thailand.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_thailand.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_tanzania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_tanzania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_taiwan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_taiwan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_sweden.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_sweden.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_swaziland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_swaziland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_sudan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_sudan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_sri.product_value__sum|intcomma != "None" %}
+                           <th>sri</th>
+                            {% endif %}
+                            {% if t_orders_somalia.product_value__sum|intcomma != "None" %}
+                           <th> somalia</th>
+                           {% endif %}
+                            {% if t_orders_solomon.product_value__sum|intcomma != "None" %}
+                            <th>solomon</th>
+                            {% endif %}
+                            {% if t_orders_slovenia.product_value__sum|intcomma != "None" %}
+                            <th>slovenia</th>
+                            {% endif %}
+                            {% if t_orders_slovakia.product_value__sum|intcomma != "None" %}
+                           <th> slovakia</th>
+                           {% endif %}
+                            {% if t_orders_singapore.product_value__sum|intcomma != "None" %}
+                            <th>singapore</th>
+                            {% endif %}
+                            {% if t_orders_sierra.product_value__sum|intcomma != "None" %}
+                            <th>sierra</th>
+                            {% endif %}
+                            {% if t_orders_serbia.product_value__sum|intcomma != "None" %}
+                            <th>serbia</th>
+                            {% endif %}
+                            {% if t_orders_senegal.product_value__sum|intcomma != "None" %}
+                            <th>senegal</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_sri.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_sri.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_somalia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_somalia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_solomon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_solomon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_slovenia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_slovenia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_slovakia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_slovakia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_singapore.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_singapore.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_sierra.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_sierra.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_serbia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_serbia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_senegal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_senegal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_san.product_value__sum|intcomma != "None" %}
+                           <th>san</th>
+                           {% endif %}
+                           {% if t_orders_rwanda.product_value__sum|intcomma != "None" %}
+                           <th> rwanda</th>
+                           {% endif %}
+                           {% if t_orders_russia.product_value__sum|intcomma != "None" %}
+                            <th>russia</th>
+                            {% endif %}
+                           {% if t_orders_romania.product_value__sum|intcomma != "None" %}
+                            <th>romania</th>
+                            {% endif %}
+                           {% if t_orders_qatar.product_value__sum|intcomma != "None" %}
+                           <th> qatar</th>
+                           {% endif %}
+                           {% if t_orders_portugal.product_value__sum|intcomma != "None" %}
+                            <th>portugal</th>
+                            {% endif %}
+                           {% if t_orders_poland.product_value__sum|intcomma != "None" %}
+                            <th>poland</th>
+                            {% endif %}
+                           {% if t_orders_philippines.product_value__sum|intcomma != "None" %}
+                            <th>philippines</th>
+                            {% endif %}
+                           {% if t_orders_peru.product_value__sum|intcomma != "None" %}
+                            <th>peru</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_san.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_san.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_rwanda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_rwanda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_russia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_russia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_romania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_romania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_qatar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_qatar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_portugal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_portugal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_poland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_poland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_philippines.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_philippines.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_peru.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_peru.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-8 col-sm-offset-2">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_paraguay.product_value__sum|intcomma != "None" %}
+                           <th>paraguay</th>
+                           {% endif %}
+                           {% if t_orders_pakistan.product_value__sum|intcomma != "None" %}
+                           <th> pakistan</th>
+                           {% endif %}
+                           {% if t_orders_oman.product_value__sum|intcomma != "None" %}
+                            <th>oman</th>
+                            {% endif %}
+                           {% if t_orders_norway.product_value__sum|intcomma != "None" %}
+                            <th>norway</th>
+                            {% endif %}
+                           {% if t_orders_niue.product_value__sum|intcomma != "None" %}
+                           <th> niue</th>
+                           {% endif %}
+                           {% if t_orders_niger.product_value__sum|intcomma != "None" %}
+                            <!--<th>niger</th>-->
+                            {% endif %}
+                           {% if t_orders_nicaragua.product_value__sum|intcomma != "None" %}
+                            <th>nicaragua</th>
+                            {% endif %}
+                           {% if t_orders_newz.product_value__sum|intcomma != "None" %}
+                            <th>new zealand</th>
+                            {% endif %}
+                           {% if t_orders_netherlands.product_value__sum|intcomma != "None" %}
+                            <th>netherlands</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_paraguay.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_paraguay.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_pakistan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_pakistan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_oman.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_oman.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_norway.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_norway.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_niue.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_niue.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_niger.product_value__sum|intcomma != "None" %}
+                                    <!--<td>₦{{ t_orders_niger.product_value__sum|intcomma }}</td>-->
+                                    {% endif %}
+                                    {% if t_orders_nicaragua.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_nicaragua.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_newz.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_newz.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_netherlands.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_netherlands.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_nepal.product_value__sum|intcomma != "None" %}
+                           <th>nepal</th>
+                           {% endif %}
+                           {% if t_orders_namibia.product_value__sum|intcomma != "None" %}
+                           <th> namibia</th>
+                           {% endif %}
+                           {% if t_orders_mozambique.product_value__sum|intcomma != "None" %}
+                            <th>mozambique</th>
+                            {% endif %}
+                           {% if t_orders_morocco.product_value__sum|intcomma != "None" %}
+                            <th>morocco</th>
+                            {% endif %}
+                           {% if t_orders_montenegro.product_value__sum|intcomma != "None" %}
+                           <th> montenegro</th>
+                           {% endif %}
+                           {% if t_orders_mongolia.product_value__sum|intcomma != "None" %}
+                            <th>mongolia</th>
+                            {% endif %}
+                           {% if t_orders_moldova.product_value__sum|intcomma != "None" %}
+                            <th>moldova</th>
+                            {% endif %}
+                           {% if t_orders_mexico.product_value__sum|intcomma != "None" %}
+                            <th>mexico</th>
+                            {% endif %}
+                           {% if t_orders_mauritius.product_value__sum|intcomma != "None" %}
+                            <th>mauritius</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_nepal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_nepal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_namibia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_namibia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_mozambique.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mozambique.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_morocco.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_morocco.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_montenegro.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_montenegro.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_mongolia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mongolia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_moldova.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_moldova.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_mexico.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mexico.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_mauritius.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mauritius.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_mauritania.product_value__sum|intcomma != "None" %}
+                           <th>mauritania</th>
+                           {% endif %}
+                           {% if t_orders_malta.product_value__sum|intcomma != "None" %}
+                           <th> malta</th>
+                           {% endif %}
+                           {% if t_orders_mali.product_value__sum|intcomma != "None" %}
+                            <th>mali</th>
+                            {% endif %}
+                           {% if t_orders_malaysia.product_value__sum|intcomma != "None" %}
+                            <th>malaysia</th>
+                            {% endif %}
+                           {% if t_orders_madagascar.product_value__sum|intcomma != "None" %}
+                           <th> madagascar</th>
+                           {% endif %}
+                           {% if t_orders_luxembourg.product_value__sum|intcomma != "None" %}
+                            <th>luxembourg</th>
+                            {% endif %}
+                           {% if t_orders_lithuania.product_value__sum|intcomma != "None" %}
+                            <th>lithuania</th>
+                            {% endif %}
+                           {% if t_orders_liechtenstein.product_value__sum|intcomma != "None" %}
+                            <th>liechtenstein</th>
+                            {% endif %}
+                           {% if t_orders_libya.product_value__sum|intcomma != "None" %}
+                            <th>libya</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_mauritania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mauritania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_malta.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_malta.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_mali.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_mali.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_malaysia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_malaysia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_madagascar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_madagascar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_luxembourg.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_luxembourg.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_lithuania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_lithuania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_liechtenstein.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_liechtenstein.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_libya.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_libya.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_liberia.product_value__sum|intcomma != "None" %}
+                           <th>liberia</th>
+                           {% endif %}
+                           {% if t_orders_lesotho.product_value__sum|intcomma != "None" %}
+                           <th> lesotho</th>
+                           {% endif %}
+                           {% if t_orders_lebanon.product_value__sum|intcomma != "None" %}
+                            <th>lebanon</th>
+                            {% endif %}
+                           {% if t_orders_latvia.product_value__sum|intcomma != "None" %}
+                            <th>latvia</th>
+                            {% endif %}
+                           {% if t_orders_kuwait.product_value__sum|intcomma != "None" %}
+                           <th> kuwait</th>
+                           {% endif %}
+                           {% if t_orders_korea.product_value__sum|intcomma != "None" %}
+                            <th>korea</th>
+                            {% endif %}
+                           {% if t_orders_kenya.product_value__sum|intcomma != "None" %}
+                            <th>kenya</th>
+                            {% endif %}
+                           {% if t_orders_kazakhstan.product_value__sum|intcomma != "None" %}
+                            <th>kazakhstan</th>
+                            {% endif %}
+                           {% if t_orders_jordan.product_value__sum|intcomma != "None" %}
+                            <th>jordan</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_liberia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_liberia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_lesotho.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_lesotho.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_lebanon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_lebanon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_latvia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_latvia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kuwait.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kuwait.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_korea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_korea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kenya.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kenya.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_kazakhstan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_kazakhstan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_jordan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_jordan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_japan.product_value__sum|intcomma != "None" %}
+                           <th>japan</th>
+                           {% endif %}
+                           {% if t_orders_jamaica.product_value__sum|intcomma != "None" %}
+                           <th> jamaica</th>
+                           {% endif %}
+                           {% if t_orders_italy.product_value__sum|intcomma != "None" %}
+                            <th>italy</th>
+                            {% endif %}
+                           {% if t_orders_israel.product_value__sum|intcomma != "None" %}
+                            <th>israel</th>
+                            {% endif %}
+                           {% if t_orders_ireland.product_value__sum|intcomma != "None" %}
+                           <th> ireland</th>
+                           {% endif %}
+                           {% if t_orders_iran.product_value__sum|intcomma != "None" %}
+                            <th>iran</th>
+                            {% endif %}
+                           {% if t_orders_iraq.product_value__sum|intcomma != "None" %}
+                            <th>iraq</th>
+                            {% endif %}
+                           {% if t_orders_indonesia.product_value__sum|intcomma != "None" %}
+                            <th>indonesia</th>
+                            {% endif %}
+                           {% if t_orders_india.product_value__sum|intcomma != "None" %}
+                            <th>india</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_japan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_japan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_jamaica.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_jamaica.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_italy.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_italy.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_israel.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_israel.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ireland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ireland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_iran.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_iran.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_iraq.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_iraq.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_indonesia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_indonesia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_india.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_india.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_iceland.product_value__sum|intcomma != "None" %}
+                           <th>iceland</th>
+                           {% endif %}
+                           {% if t_orders_hungary.product_value__sum|intcomma != "None" %}
+                           <th> hungary</th>
+                           {% endif %}
+                           {% if t_orders_hong.product_value__sum|intcomma != "None" %}
+                            <th>hong kong</th>
+                            {% endif %}
+                           {% if t_orders_honduras.product_value__sum|intcomma != "None" %}
+                            <th>honduras</th>
+                            {% endif %}
+                           {% if t_orders_haiti.product_value__sum|intcomma != "None" %}
+                           <th> haiti</th>
+                           {% endif %}
+                           {% if t_orders_guineab.product_value__sum|intcomma != "None" %}
+                            <th>guinea bisseau</th>
+                            {% endif %}
+                           {% if t_orders_guinea.product_value__sum|intcomma != "None" %}
+                            <th>guinea</th>
+                            {% endif %}
+                           {% if t_orders_guatemala.product_value__sum|intcomma != "None" %}
+                            <th>guatemala</th>
+                            {% endif %}
+                           {% if t_orders_greenland.product_value__sum|intcomma != "None" %}
+                            <th>greenland</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_iceland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_iceland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_hungary.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_hungary.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_hong.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_hong.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_honduras.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_honduras.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_haiti.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_haiti.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_guineab.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_guineab.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_guinea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_guinea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_guatemala.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_guatemala.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_greenland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_greenland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_greece.product_value__sum|intcomma != "None" %}
+                           <th>greece</th>
+                           {% endif %}
+                           {% if t_orders_gibraltar.product_value__sum|intcomma != "None" %}
+                           <th> gibraltar</th>
+                           {% endif %}
+                           {% if t_orders_germany.product_value__sum|intcomma != "None" %}
+                            <th>germany</th>
+                            {% endif %}
+                           {% if t_orders_georgia.product_value__sum|intcomma != "None" %}
+                            <th>georgia</th>
+                            {% endif %}
+                           {% if t_orders_gambia.product_value__sum|intcomma != "None" %}
+                           <th> gambia</th>
+                           {% endif %}
+                           {% if t_orders_gabon.product_value__sum|intcomma != "None" %}
+                            <th>gabon</th>
+                            {% endif %}
+                           {% if t_orders_france.product_value__sum|intcomma != "None" %}
+                            <th>france</th>
+                            {% endif %}
+                           {% if t_orders_finland.product_value__sum|intcomma != "None" %}
+                            <th>finland</th>
+                            {% endif %}
+                           {% if t_orders_faroe.product_value__sum|intcomma != "None" %}
+                            <th>faroe</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_greece.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_greece.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_gibraltar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_gibraltar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_germany.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_germany.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_georgia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_georgia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_gambia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_gambia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_gabon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_gabon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_france.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_france.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_finland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_finland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_faroe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_faroe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_ethiopia.product_value__sum|intcomma != "None" %}
+                           <th>ethiopia</th>
+                           {% endif %}
+                           {% if t_orders_estonia.product_value__sum|intcomma != "None" %}
+                           <th> estonia</th>
+                           {% endif %}
+                           {% if t_orders_eritrea.product_value__sum|intcomma != "None" %}
+                            <th>eritrea</th>
+                            {% endif %}
+                           {% if t_orders_equatorial.product_value__sum|intcomma != "None" %}
+                            <th>equatorial</th>
+                            {% endif %}
+                           {% if t_orders_egypt.product_value__sum|intcomma != "None" %}
+                           <th> egypt</th>
+                           {% endif %}
+                           {% if t_orders_ecuador.product_value__sum|intcomma != "None" %}
+                            <th>ecuador</th>
+                            {% endif %}
+                           {% if t_orders_denmark.product_value__sum|intcomma != "None" %}
+                            <th>denmark</th>
+                            {% endif %}
+                           {% if t_orders_czech.product_value__sum|intcomma != "None" %}
+                            <th>czech</th>
+                            {% endif %}
+                           {% if t_orders_cyprus.product_value__sum|intcomma != "None" %}
+                            <th>cyprus</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_ethiopia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ethiopia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_estonia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_estonia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_eritrea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_eritrea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_equatorial.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_equatorial.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_egypt.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_egypt.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ecuador.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ecuador.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_denmark.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_denmark.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_czech.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_czech.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_cyprus.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_cyprus.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_cuba.product_value__sum|intcomma != "None" %}
+                           <th>cuba</th>
+                           {% endif %}
+                           {% if t_orders_croatia.product_value__sum|intcomma != "None" %}
+                           <th> croatia</th>
+                           {% endif %}
+                           {% if t_orders_ivory.product_value__sum|intcomma != "None" %}
+                            <th>ivory coast</th>
+                            {% endif %}
+                           {% if t_orders_costa.product_value__sum|intcomma != "None" %}
+                            <th>costa rica</th>
+                            {% endif %}
+                           {% if t_orders_congo.product_value__sum|intcomma != "None" %}
+                           <th> congo</th>
+                           {% endif %}
+                           {% if t_orders_colombia.product_value__sum|intcomma != "None" %}
+                            <th>colombia</th>
+                            {% endif %}
+                           {% if t_orders_china.product_value__sum|intcomma != "None" %}
+                            <th>china</th>
+                            {% endif %}
+                           {% if t_orders_cameroo.product_value__sum|intcomma != "None" %}
+                            <th>cameroun</th>
+                            {% endif %}
+                           {% if t_orders_brazil.product_value__sum|intcomma != "None" %}
+                            <th>brazil</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_cuba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_cuba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_croatia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_croatia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_ivory.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_ivory.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_costa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_costa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_congo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_congo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_colombia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_colombia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_china.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_china.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_cameroo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_cameroo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_brazil.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_brazil.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if t_orders_botswana.product_value__sum|intcomma != "None" %}
+                           <th>botswana</th>
+                           {% endif %}
+                           {% if t_orders_benin.product_value__sum|intcomma != "None" %}
+                           <th> benin</th>
+                           {% endif %}
+                           {% if t_orders_belgium.product_value__sum|intcomma != "None" %}
+                            <th>belgium</th>
+                            {% endif %}
+                           {% if t_orders_austria.product_value__sum|intcomma != "None" %}
+                            <th>austria</th>
+                            {% endif %}
+                           {% if t_orders_australi.product_value__sum|intcomma != "None" %}
+                           <th> australia</th>
+                           {% endif %}
+                           {% if t_orders_argentina.product_value__sum|intcomma != "None" %}
+                            <th>argentina</th>
+                            {% endif %}
+                           {% if t_orders_angola.product_value__sum|intcomma != "None" %}
+                            <th>angola</th>
+                            {% endif %}
+                           {% if t_orders_algeria.product_value__sum|intcomma != "None" %}
+                            <th>algeria</th>
+                            {% endif %}
+                           {% if t_orders_albania.product_value__sum|intcomma != "None" %}
+                            <th>albania</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if t_orders_botswana.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_botswana.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_benin.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_benin.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_belgium.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_belgium.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_austria.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_austria.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_australi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_australi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_argentina.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_argentina.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_angola.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_angola.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_algeria.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_algeria.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if t_orders_albania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ t_orders_albania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                <div class="alert alert-info col-sm-offset-2">
+                    <strong><h4>Total Product Value for {{ category|capfirst }} : ₦{{ product_value_total.product_value__sum|intcomma }}</h4></strong>
+                </div>
+
+                </div><br/><br/>
+    <div style="margin-right: -230px;padding-left: 220px;">
+        <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_Jakande.product_value__sum|intcomma != "None" %}
+                          <th>Jakande</th>
+                          {%endif%}
+                          {% if y_orders_Sangotedo.product_value__sum|intcomma != "None" %}
+                            <th>Sangotedo</th>
+                            {%endif%}
+                            {% if y_orders_Eleko.product_value__sum|intcomma != "None" %}
+                            <th>Eleko</th>
+                            {% endif %}
+                            {% if y_orders_Ajah.product_value__sum|intcomma != "None" %}
+                            <th>Ajah</th>
+                            {% endif %}
+                            {% if y_orders_Ogba.product_value__sum|intcomma != "None" %}
+                            <th>Ogba</th>
+                            {% endif %}
+                            {% if y_orders_Festac.product_value__sum|intcomma != "None" %}
+                            <th>Festac</th>
+                            {% endif %}
+                            {% if y_orders_Aguda.product_value__sum|intcomma != "None" %}
+                            <th>Aguda/Surulere</th>
+                            {% endif %}
+                            {% if y_orders_Ketu.product_value__sum|intcomma != "None" %}
+                           <th>Ketu</th>
+                           {% endif %}
+                           {% if y_orders_VI.product_value__sum|intcomma != "None" %}
+                            <th>VI</th>
+                            {% endif %}
+                            {% if y_orders_Ikotun.product_value__sum|intcomma != "None" %}
+                            <th>Ikotun</th>
+                            {% endif %}
+                            {% if y_orders_Oshodi.product_value__sum|intcomma != "None" %}
+                            <th>Oshodi</th>
+                            {% endif %}
+                            {% if y_orders_Ikeja.product_value__sum|intcomma != "None" %}
+                            <th>Ikeja</th>
+                            {% endif %}
+                            {% if y_orders_Lekki.product_value__sum|intcomma != "None" %}
+                           <th>Lekki</th>
+                           {% endif %}
+                           {% if y_orders_Apapa.product_value__sum|intcomma != "None" %}
+                            <th>Apapa</th>
+                            {% endif %}
+
+                      </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_Jakande.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Jakande.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Sangotedo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Sangotedo.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_Eleko.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Eleko.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_Ajah.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Ajah.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_Ogba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Ogba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Festac.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Festac.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Aguda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Aguda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Ketu.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Ketu.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_VI.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_VI.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Ikotun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Ikotun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Oshodi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Oshodi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Ikeja.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Ikeja.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Lekki.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Lekki.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_Apapa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_Apapa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+            <div class="col-md-9">
+                 <center><h4>{{ category|capfirst }} - Yesterday's Orders</h4></center>
+                 <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_abia.product_value__sum|intcomma != "None" %}
+                          <th>Abia</th>
+                          {%endif%}
+                          {% if y_orders_adamawa.product_value__sum|intcomma != "None" %}
+                            <th>Adamawa</th>
+                            {%endif%}
+                            {% if y_orders_anambra.product_value__sum|intcomma != "None" %}
+                            <th>Anambra</th>
+                            {% endif %}
+                            {% if y_orders_akwa_ibom.product_value__sum|intcomma != "None" %}
+                            <th>Akwa Ibom</th>
+                            {% endif %}
+                            {% if y_orders_bauchi.product_value__sum|intcomma != "None" %}
+                            <th>Bauchi</th>
+                            {% endif %}
+                            {% if y_orders_bayelsa.product_value__sum|intcomma != "None" %}
+                            <th>Bayelsa</th>
+                            {% endif %}
+                            {% if y_orders_benue.product_value__sum|intcomma != "None" %}
+                            <th>Benue</th>
+                            {% endif %}
+                            {% if y_orders_borno.product_value__sum|intcomma != "None" %}
+                           <th>Borno</th>
+                           {% endif %}
+                           {% if y_orders_cross_river.product_value__sum|intcomma != "None" %}
+                            <th>Cross River</th>
+                            {% endif %}
+
+                      </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_abia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_abia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_adamawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_adamawa.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_anambra.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_anambra.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_akwa_ibom.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_akwa_ibom.product_value__sum|intcomma }}</td>
+                                    {%endif%}
+                                    {% if y_orders_bauchi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_bauchi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_bayelsa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_bayelsa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_benue.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_benue.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_borno.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_borno.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_cross_river.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_cross_river.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>{% if y_orders_delta.product_value__sum|intcomma != "None" %}
+                          <th>Delta</th>
+                          {% endif %}
+                          {% if y_orders_ebonyi.product_value__sum|intcomma != "None" %}
+                            <th>Ebonyi</th>
+                            {% endif %}
+                            {% if y_orders_enugu.product_value__sum|intcomma != "None" %}
+                            <th>Enugu</th>
+                            {% endif %}
+                            {% if y_orders_edo.product_value__sum|intcomma != "None" %}
+                            <th>Edo</th>
+                            {% endif %}
+                            {% if y_orders_ekiti.product_value__sum|intcomma != "None" %}
+                            <th>Ekiti</th>
+                            {% endif %}
+                            {% if y_orders_gombe.product_value__sum|intcomma != "None" %}
+                            <th>Gombe</th>
+                            {% endif %}
+                            {% if y_orders_imo.product_value__sum|intcomma != "None" %}
+                            <th>Imo</th>
+                            {% endif %}
+                            {% if y_orders_jigawa.product_value__sum|intcomma != "None" %}
+                            <th>Jigawa</th>
+                            {% endif %}
+                            {% if y_orders_kaduna.product_value__sum|intcomma != "None" %}
+                            <th>Kaduna</th>
+                            {% endif %}
+                             </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_delta.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_delta.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ebonyi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ebonyi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_enugu.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_enugu.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_edo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_edo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ekiti.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ekiti.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_gombe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_gombe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_imo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_imo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_jigawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_jigawa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kaduna.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kaduna.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                 <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_kano.product_value__sum|intcomma != "None" %}
+                           <th>Kano</th>
+                           {% endif %}
+                           {% if y_orders_katsina.product_value__sum|intcomma != "None" %}
+                           <th> Katsina</th>
+                           {% endif %}
+                           {% if y_orders_kebbi.product_value__sum|intcomma != "None" %}
+                            <th>Kebbi</th>
+                            {% endif %}
+                            {% if y_orders_kogi.product_value__sum|intcomma != "None" %}
+                            <th>Kogi</th>
+                            {% endif %}
+                            {% if y_orders_kwara.product_value__sum|intcomma != "None" %}
+                           <th> Kwara</th>
+                           {% endif %}
+                           {% if y_orders_lagos.product_value__sum|intcomma != "None" %}
+                            <th>Lagos</th>
+                            {% endif %}
+                            {% if y_orders_nasarawa.product_value__sum|intcomma != "None" %}
+                            <th>Nasarawa</th>
+                            {% endif %}
+                            {% if y_orders_niger.product_value__sum|intcomma != "None" %}
+                            <th>Niger</th>
+                            {% endif %}
+                            {% if y_orders_ogun.product_value__sum|intcomma != "None" %}
+                            <th>Ogun</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_kano.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kano.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_katsina.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_katsina.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kebbi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kebbi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kogi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kogi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kwara.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kwara.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_lagos.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_lagos.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_nasarawa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_nasarawa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_niger.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_niger.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ogun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ogun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_ondo.product_value__sum|intcomma != "None" %}
+                          <th>Ondo</th>
+                          {% endif %}
+                          {% if y_orders_osun.product_value__sum|intcomma != "None" %}
+                            <th>Osun</th>
+                            {% endif %}
+                          {% if y_orders_oyo.product_value__sum|intcomma != "None" %}
+                            <th>Oyo</th>
+                            {% endif %}
+                          {% if y_orders_plateau.product_value__sum|intcomma != "None" %}
+                           <th>Plateau</th>
+                           {% endif %}
+                          {% if y_orders_rivers.product_value__sum|intcomma != "None" %}
+                            <th>Rivers</th>
+                            {% endif %}
+                          {% if y_orders_sokoto.product_value__sum|intcomma != "None" %}
+                            <th>Sokoto</th>
+                            {% endif %}
+                          {% if y_orders_taraba.product_value__sum|intcomma != "None" %}
+                            <th>Taraba</th>
+                            {% endif %}
+                          {% if y_orders_yobe.product_value__sum|intcomma != "None" %}
+                            <th>Yobe</th>
+                            {% endif %}
+                          {% if y_orders_zamfara.product_value__sum|intcomma != "None" %}
+                           <th> Zamfara</th>
+                           {% endif %}
+                          {% if y_orders_abuja.product_value__sum|intcomma != "None" %}
+                           <th>Abuja</th>
+                           {% endif %}
+                           </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_ondo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ondo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_osun.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_osun.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_oyo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_oyo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_plateau.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_plateau.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_rivers.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_rivers.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_sokoto.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_sokoto.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_taraba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_taraba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_yobe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_yobe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_zamfara.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_zamfara.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_abuja.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_abuja.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9" style="padding-left:240px">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_spain.product_value__sum|intcomma != "None" %}
+                           <th>Spain</th>
+                           {% endif %}
+                           {% if y_orders_usa.product_value__sum|intcomma != "None" %}
+                           <th> USA</th>
+                           {% endif %}
+                           {% if y_orders_uk.product_value__sum|intcomma != "None" %}
+                            <th>UK</th>
+                            {% endif %}
+                            {% if y_orders_ghana.product_value__sum|intcomma != "None" %}
+                            <th>Ghana</th>
+                            {% endif %}
+                            {% if y_orders_canada.product_value__sum|intcomma != "None" %}
+                           <th> Canada</th>
+                           {% endif %}
+                           {% if y_orders_france.product_value__sum|intcomma != "None" %}
+                            <th>France</th>
+                            {% endif %}
+                           {% if y_orders_germany.product_value__sum|intcomma != "None" %}
+                            <th>Germany</th>
+                            {% endif %}
+                           {% if y_orders_italy.product_value__sum|intcomma != "None" %}
+                            <th>Italy</th>
+                            {% endif %}
+                           {% if y_orders_liberia.product_value__sum|intcomma != "None" %}
+                            <th>Liberia</th>
+                            {% endif %}
+                           {% if y_orders_saudi.product_value__sum|intcomma != "None" %}
+                            <th>Saudi Arabia</th>
+                            {% endif %}
+                           {% if y_orders_south.product_value__sum|intcomma != "None" %}
+                            <th>South Africa</th>
+                            {% endif %}
+                           {% if y_orders_switzerland.product_value__sum|intcomma != "None" %}
+                            <th>Switzerland</th>
+                            {% endif %}
+                            {% if y_orders_turkey.product_value__sum|intcomma != "None" %}
+                            <th>Turkey</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_spain.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_spain.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_usa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_usa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_uk.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_uk.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ghana.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ghana.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_canada.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_canada.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_france.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_france.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_germany.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_germany.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_italy.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_italy.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_liberia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_liberia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_saudi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_saudi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_south.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_south.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_switzerland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_switzerland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_turkey.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_turkey.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_zimbabwe.product_value__sum|intcomma != "None" %}
+                           <th>Zimbabwe</th>
+                           {% endif %}
+                           {% if y_orders_zambia.product_value__sum|intcomma != "None" %}
+                           <th> Zambia</th>
+                           {% endif %}
+                           {% if y_orders_yemen.product_value__sum|intcomma != "None" %}
+                            <th>Yemen</th>
+                            {% endif %}
+                            {% if y_orders_venezuela.product_value__sum|intcomma != "None" %}
+                            <th>Venezuela</th>
+                            {% endif %}
+                            {% if y_orders_uzbekistan.product_value__sum|intcomma != "None" %}
+                           <th> Uzbekistan</th>
+                           {% endif %}
+                           {% if y_orders_uruguay.product_value__sum|intcomma != "None" %}
+                            <th>Uruguay</th>
+                            {% endif %}
+                            {% if y_orders_uae.product_value__sum|intcomma != "None" %}
+                            <th>UAE</th>
+                            {% endif %}
+                            {% if y_orders_ukraine.product_value__sum|intcomma != "None" %}
+                            <th>Ukraine</th>
+                            {% endif %}
+                            {% if y_orders_uganda.product_value__sum|intcomma != "None" %}
+                            <th>Uganda</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_zimbabwe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_zimbabwe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_zambia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_zambia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_yemen.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_yemen.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_venezuela.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_venezuela.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_uzbekistan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_uzbekistan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_uruguay.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_uruguay.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_uae.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_uae.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ukraine.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ukraine.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_uganda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_uganda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_tunisia.product_value__sum|intcomma != "None" %}
+                           <th>tunisia</th>
+                           {% endif %}
+                           {% if y_orders_trinidad.product_value__sum|intcomma != "None" %}
+                           <th> trinidad</th>
+                           {% endif %}
+                           {% if y_orders_togo.product_value__sum|intcomma != "None" %}
+                            <th>togo</th>
+                            {% endif %}
+                           {% if y_orders_thailand.product_value__sum|intcomma != "None" %}
+                            <th>thailand</th>
+                            {% endif %}
+                           {% if y_orders_tanzania.product_value__sum|intcomma != "None" %}
+                           <th> tanzania</th>
+                           {% endif %}
+                           {% if y_orders_taiwan.product_value__sum|intcomma != "None" %}
+                            <th>taiwan</th>
+                            {% endif %}
+                           {% if y_orders_sweden.product_value__sum|intcomma != "None" %}
+                            <th>sweden</th>
+                            {% endif %}
+                           {% if y_orders_swaziland.product_value__sum|intcomma != "None" %}
+                            <th>swaziland</th>
+                            {% endif %}
+                           {% if y_orders_sudan.product_value__sum|intcomma != "None" %}
+                            <th>sudan</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_tunisia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_tunisia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_trinidad.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_trinidad.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_togo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_togo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_thailand.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_thailand.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_tanzania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_tanzania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_taiwan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_taiwan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_sweden.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_sweden.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_swaziland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_swaziland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_sudan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_sudan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_sri.product_value__sum|intcomma != "None" %}
+                           <th>sri</th>
+                            {% endif %}
+                            {% if y_orders_somalia.product_value__sum|intcomma != "None" %}
+                           <th> somalia</th>
+                           {% endif %}
+                            {% if y_orders_solomon.product_value__sum|intcomma != "None" %}
+                            <th>solomon</th>
+                            {% endif %}
+                            {% if y_orders_slovenia.product_value__sum|intcomma != "None" %}
+                            <th>slovenia</th>
+                            {% endif %}
+                            {% if y_orders_slovakia.product_value__sum|intcomma != "None" %}
+                           <th> slovakia</th>
+                           {% endif %}
+                            {% if y_orders_singapore.product_value__sum|intcomma != "None" %}
+                            <th>singapore</th>
+                            {% endif %}
+                            {% if y_orders_sierra.product_value__sum|intcomma != "None" %}
+                            <th>sierra</th>
+                            {% endif %}
+                            {% if y_orders_serbia.product_value__sum|intcomma != "None" %}
+                            <th>serbia</th>
+                            {% endif %}
+                            {% if y_orders_senegal.product_value__sum|intcomma != "None" %}
+                            <th>senegal</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_sri.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_sri.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_somalia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_somalia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_solomon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_solomon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_slovenia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_slovenia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_slovakia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_slovakia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_singapore.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_singapore.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_sierra.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_sierra.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_serbia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_serbia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_senegal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_senegal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_san.product_value__sum|intcomma != "None" %}
+                           <th>san</th>
+                           {% endif %}
+                           {% if y_orders_rwanda.product_value__sum|intcomma != "None" %}
+                           <th> rwanda</th>
+                           {% endif %}
+                           {% if y_orders_russia.product_value__sum|intcomma != "None" %}
+                            <th>russia</th>
+                            {% endif %}
+                           {% if y_orders_romania.product_value__sum|intcomma != "None" %}
+                            <th>romania</th>
+                            {% endif %}
+                           {% if y_orders_qatar.product_value__sum|intcomma != "None" %}
+                           <th> qatar</th>
+                           {% endif %}
+                           {% if y_orders_portugal.product_value__sum|intcomma != "None" %}
+                            <th>portugal</th>
+                            {% endif %}
+                           {% if y_orders_poland.product_value__sum|intcomma != "None" %}
+                            <th>poland</th>
+                            {% endif %}
+                           {% if y_orders_philippines.product_value__sum|intcomma != "None" %}
+                            <th>philippines</th>
+                            {% endif %}
+                           {% if y_orders_peru.product_value__sum|intcomma != "None" %}
+                            <th>peru</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_san.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_san.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_rwanda.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_rwanda.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_russia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_russia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_romania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_romania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_qatar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_qatar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_portugal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_portugal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_poland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_poland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_philippines.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_philippines.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_peru.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_peru.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_paraguay.product_value__sum|intcomma != "None" %}
+                           <th>paraguay</th>
+                           {% endif %}
+                           {% if y_orders_pakistan.product_value__sum|intcomma != "None" %}
+                           <th> pakistan</th>
+                           {% endif %}
+                           {% if y_orders_oman.product_value__sum|intcomma != "None" %}
+                            <th>oman</th>
+                            {% endif %}
+                           {% if y_orders_norway.product_value__sum|intcomma != "None" %}
+                            <th>norway</th>
+                            {% endif %}
+                           {% if y_orders_niue.product_value__sum|intcomma != "None" %}
+                           <th> niue</th>
+                           {% endif %}
+                           {% if y_orders_niger.product_value__sum|intcomma != "None" %}
+                            <!--<th>niger</th>-->
+                            {% endif %}
+                           {% if y_orders_nicaragua.product_value__sum|intcomma != "None" %}
+                            <th>nicaragua</th>
+                            {% endif %}
+                           {% if y_orders_newz.product_value__sum|intcomma != "None" %}
+                            <th>new zealand</th>
+                            {% endif %}
+                           {% if y_orders_netherlands.product_value__sum|intcomma != "None" %}
+                            <th>netherlands</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_paraguay.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_paraguay.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_pakistan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_pakistan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_oman.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_oman.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_norway.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_norway.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_niue.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_niue.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_niger.product_value__sum|intcomma != "None" %}
+                                    <!--<td>₦{{ y_orders_niger.product_value__sum|intcomma }}</td>-->
+                                    {% endif %}
+                                    {% if y_orders_nicaragua.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_nicaragua.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_newz.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_newz.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_netherlands.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_netherlands.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_nepal.product_value__sum|intcomma != "None" %}
+                           <th>nepal</th>
+                           {% endif %}
+                           {% if y_orders_namibia.product_value__sum|intcomma != "None" %}
+                           <th> namibia</th>
+                           {% endif %}
+                           {% if y_orders_mozambique.product_value__sum|intcomma != "None" %}
+                            <th>mozambique</th>
+                            {% endif %}
+                           {% if y_orders_morocco.product_value__sum|intcomma != "None" %}
+                            <th>morocco</th>
+                            {% endif %}
+                           {% if y_orders_montenegro.product_value__sum|intcomma != "None" %}
+                           <th> montenegro</th>
+                           {% endif %}
+                           {% if y_orders_mongolia.product_value__sum|intcomma != "None" %}
+                            <th>mongolia</th>
+                            {% endif %}
+                           {% if y_orders_moldova.product_value__sum|intcomma != "None" %}
+                            <th>moldova</th>
+                            {% endif %}
+                           {% if y_orders_mexico.product_value__sum|intcomma != "None" %}
+                            <th>mexico</th>
+                            {% endif %}
+                           {% if y_orders_mauritius.product_value__sum|intcomma != "None" %}
+                            <th>mauritius</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_nepal.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_nepal.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_namibia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_namibia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_mozambique.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mozambique.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_morocco.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_morocco.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_montenegro.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_montenegro.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_mongolia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mongolia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_moldova.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_moldova.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_mexico.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mexico.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_mauritius.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mauritius.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_mauritania.product_value__sum|intcomma != "None" %}
+                           <th>mauritania</th>
+                           {% endif %}
+                           {% if y_orders_malta.product_value__sum|intcomma != "None" %}
+                           <th> malta</th>
+                           {% endif %}
+                           {% if y_orders_mali.product_value__sum|intcomma != "None" %}
+                            <th>mali</th>
+                            {% endif %}
+                           {% if y_orders_malaysia.product_value__sum|intcomma != "None" %}
+                            <th>malaysia</th>
+                            {% endif %}
+                           {% if y_orders_madagascar.product_value__sum|intcomma != "None" %}
+                           <th> madagascar</th>
+                           {% endif %}
+                           {% if y_orders_luxembourg.product_value__sum|intcomma != "None" %}
+                            <th>luxembourg</th>
+                            {% endif %}
+                           {% if y_orders_lithuania.product_value__sum|intcomma != "None" %}
+                            <th>lithuania</th>
+                            {% endif %}
+                           {% if y_orders_liechtenstein.product_value__sum|intcomma != "None" %}
+                            <th>liechtenstein</th>
+                            {% endif %}
+                           {% if y_orders_libya.product_value__sum|intcomma != "None" %}
+                            <th>libya</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_mauritania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mauritania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_malta.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_malta.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_mali.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_mali.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_malaysia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_malaysia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_madagascar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_madagascar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_luxembourg.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_luxembourg.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_lithuania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_lithuania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_liechtenstein.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_liechtenstein.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_libya.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_libya.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_liberia.product_value__sum|intcomma != "None" %}
+                           <th>liberia</th>
+                           {% endif %}
+                           {% if y_orders_lesotho.product_value__sum|intcomma != "None" %}
+                           <th> lesotho</th>
+                           {% endif %}
+                           {% if y_orders_lebanon.product_value__sum|intcomma != "None" %}
+                            <th>lebanon</th>
+                            {% endif %}
+                           {% if y_orders_latvia.product_value__sum|intcomma != "None" %}
+                            <th>latvia</th>
+                            {% endif %}
+                           {% if y_orders_kuwait.product_value__sum|intcomma != "None" %}
+                           <th> kuwait</th>
+                           {% endif %}
+                           {% if y_orders_korea.product_value__sum|intcomma != "None" %}
+                            <th>korea</th>
+                            {% endif %}
+                           {% if y_orders_kenya.product_value__sum|intcomma != "None" %}
+                            <th>kenya</th>
+                            {% endif %}
+                           {% if y_orders_kazakhstan.product_value__sum|intcomma != "None" %}
+                            <th>kazakhstan</th>
+                            {% endif %}
+                           {% if y_orders_jordan.product_value__sum|intcomma != "None" %}
+                            <th>jordan</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_liberia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_liberia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_lesotho.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_lesotho.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_lebanon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_lebanon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_latvia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_latvia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kuwait.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kuwait.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_korea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_korea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kenya.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kenya.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_kazakhstan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_kazakhstan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_jordan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_jordan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_japan.product_value__sum|intcomma != "None" %}
+                           <th>japan</th>
+                           {% endif %}
+                           {% if y_orders_jamaica.product_value__sum|intcomma != "None" %}
+                           <th> jamaica</th>
+                           {% endif %}
+                           {% if y_orders_italy.product_value__sum|intcomma != "None" %}
+                            <th>italy</th>
+                            {% endif %}
+                           {% if y_orders_israel.product_value__sum|intcomma != "None" %}
+                            <th>israel</th>
+                            {% endif %}
+                           {% if y_orders_ireland.product_value__sum|intcomma != "None" %}
+                           <th> ireland</th>
+                           {% endif %}
+                           {% if y_orders_iran.product_value__sum|intcomma != "None" %}
+                            <th>iran</th>
+                            {% endif %}
+                           {% if y_orders_iraq.product_value__sum|intcomma != "None" %}
+                            <th>iraq</th>
+                            {% endif %}
+                           {% if y_orders_indonesia.product_value__sum|intcomma != "None" %}
+                            <th>indonesia</th>
+                            {% endif %}
+                           {% if y_orders_india.product_value__sum|intcomma != "None" %}
+                            <th>india</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_japan.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_japan.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_jamaica.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_jamaica.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_italy.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_italy.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_israel.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_israel.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ireland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ireland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_iran.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_iran.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_iraq.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_iraq.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_indonesia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_indonesia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_india.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_india.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_iceland.product_value__sum|intcomma != "None" %}
+                           <th>iceland</th>
+                           {% endif %}
+                           {% if y_orders_hungary.product_value__sum|intcomma != "None" %}
+                           <th> hungary</th>
+                           {% endif %}
+                           {% if y_orders_hong.product_value__sum|intcomma != "None" %}
+                            <th>hong kong</th>
+                            {% endif %}
+                           {% if y_orders_honduras.product_value__sum|intcomma != "None" %}
+                            <th>honduras</th>
+                            {% endif %}
+                           {% if y_orders_haiti.product_value__sum|intcomma != "None" %}
+                           <th> haiti</th>
+                           {% endif %}
+                           {% if y_orders_guineab.product_value__sum|intcomma != "None" %}
+                            <th>guinea bisseau</th>
+                            {% endif %}
+                           {% if y_orders_guinea.product_value__sum|intcomma != "None" %}
+                            <th>guinea</th>
+                            {% endif %}
+                           {% if y_orders_guatemala.product_value__sum|intcomma != "None" %}
+                            <th>guatemala</th>
+                            {% endif %}
+                           {% if y_orders_greenland.product_value__sum|intcomma != "None" %}
+                            <th>greenland</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_iceland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_iceland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_hungary.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_hungary.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_hong.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_hong.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_honduras.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_honduras.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_haiti.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_haiti.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_guineab.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_guineab.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_guinea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_guinea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_guatemala.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_guatemala.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_greenland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_greenland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_greece.product_value__sum|intcomma != "None" %}
+                           <th>greece</th>
+                           {% endif %}
+                           {% if y_orders_gibraltar.product_value__sum|intcomma != "None" %}
+                           <th> gibraltar</th>
+                           {% endif %}
+                           {% if y_orders_germany.product_value__sum|intcomma != "None" %}
+                            <th>germany</th>
+                            {% endif %}
+                           {% if y_orders_georgia.product_value__sum|intcomma != "None" %}
+                            <th>georgia</th>
+                            {% endif %}
+                           {% if y_orders_gambia.product_value__sum|intcomma != "None" %}
+                           <th> gambia</th>
+                           {% endif %}
+                           {% if y_orders_gabon.product_value__sum|intcomma != "None" %}
+                            <th>gabon</th>
+                            {% endif %}
+                           {% if y_orders_france.product_value__sum|intcomma != "None" %}
+                            <th>france</th>
+                            {% endif %}
+                           {% if y_orders_finland.product_value__sum|intcomma != "None" %}
+                            <th>finland</th>
+                            {% endif %}
+                           {% if y_orders_faroe.product_value__sum|intcomma != "None" %}
+                            <th>faroe</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_greece.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_greece.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_gibraltar.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_gibraltar.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_germany.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_germany.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_georgia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_georgia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_gambia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_gambia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_gabon.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_gabon.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_france.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_france.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_finland.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_finland.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_faroe.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_faroe.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_ethiopia.product_value__sum|intcomma != "None" %}
+                           <th>ethiopia</th>
+                           {% endif %}
+                           {% if y_orders_estonia.product_value__sum|intcomma != "None" %}
+                           <th> estonia</th>
+                           {% endif %}
+                           {% if y_orders_eritrea.product_value__sum|intcomma != "None" %}
+                            <th>eritrea</th>
+                            {% endif %}
+                           {% if y_orders_equatorial.product_value__sum|intcomma != "None" %}
+                            <th>equatorial</th>
+                            {% endif %}
+                           {% if y_orders_egypt.product_value__sum|intcomma != "None" %}
+                           <th> egypt</th>
+                           {% endif %}
+                           {% if y_orders_ecuador.product_value__sum|intcomma != "None" %}
+                            <th>ecuador</th>
+                            {% endif %}
+                           {% if y_orders_denmark.product_value__sum|intcomma != "None" %}
+                            <th>denmark</th>
+                            {% endif %}
+                           {% if y_orders_czech.product_value__sum|intcomma != "None" %}
+                            <th>czech</th>
+                            {% endif %}
+                           {% if y_orders_cyprus.product_value__sum|intcomma != "None" %}
+                            <th>cyprus</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_ethiopia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ethiopia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_estonia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_estonia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_eritrea.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_eritrea.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_equatorial.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_equatorial.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_egypt.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_egypt.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ecuador.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ecuador.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_denmark.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_denmark.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_czech.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_czech.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_cyprus.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_cyprus.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_cuba.product_value__sum|intcomma != "None" %}
+                           <th>cuba</th>
+                           {% endif %}
+                           {% if y_orders_croatia.product_value__sum|intcomma != "None" %}
+                           <th> croatia</th>
+                           {% endif %}
+                           {% if y_orders_ivory.product_value__sum|intcomma != "None" %}
+                            <th>ivory coast</th>
+                            {% endif %}
+                           {% if y_orders_costa.product_value__sum|intcomma != "None" %}
+                            <th>costa rica</th>
+                            {% endif %}
+                           {% if y_orders_congo.product_value__sum|intcomma != "None" %}
+                           <th> congo</th>
+                           {% endif %}
+                           {% if y_orders_colombia.product_value__sum|intcomma != "None" %}
+                            <th>colombia</th>
+                            {% endif %}
+                           {% if y_orders_china.product_value__sum|intcomma != "None" %}
+                            <th>china</th>
+                            {% endif %}
+                           {% if y_orders_cameroo.product_value__sum|intcomma != "None" %}
+                            <th>cameroun</th>
+                            {% endif %}
+                           {% if y_orders_brazil.product_value__sum|intcomma != "None" %}
+                            <th>brazil</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_cuba.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_cuba.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_croatia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_croatia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_ivory.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_ivory.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_costa.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_costa.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_congo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_congo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_colombia.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_colombia.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_china.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_china.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_cameroo.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_cameroo.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_brazil.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_brazil.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                </div>
+                <div class="col-md-9">
+                     <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          {% if y_orders_botswana.product_value__sum|intcomma != "None" %}
+                           <th>botswana</th>
+                           {% endif %}
+                           {% if y_orders_benin.product_value__sum|intcomma != "None" %}
+                           <th> benin</th>
+                           {% endif %}
+                           {% if y_orders_belgium.product_value__sum|intcomma != "None" %}
+                            <th>belgium</th>
+                            {% endif %}
+                           {% if y_orders_austria.product_value__sum|intcomma != "None" %}
+                            <th>austria</th>
+                            {% endif %}
+                           {% if y_orders_australi.product_value__sum|intcomma != "None" %}
+                           <th> australia</th>
+                           {% endif %}
+                           {% if y_orders_argentina.product_value__sum|intcomma != "None" %}
+                            <th>argentina</th>
+                            {% endif %}
+                           {% if y_orders_angola.product_value__sum|intcomma != "None" %}
+                            <th>angola</th>
+                            {% endif %}
+                           {% if y_orders_algeria.product_value__sum|intcomma != "None" %}
+                            <th>algeria</th>
+                            {% endif %}
+                           {% if y_orders_albania.product_value__sum|intcomma != "None" %}
+                            <th>albania</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                            <tbody>
+                                <tr>
+                                    {% if y_orders_botswana.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_botswana.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_benin.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_benin.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_belgium.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_belgium.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_austria.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_austria.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_australi.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_australi.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_argentina.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_argentina.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_angola.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_angola.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_algeria.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_algeria.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    {% if y_orders_albania.product_value__sum|intcomma != "None" %}
+                                    <td>₦{{ y_orders_albania.product_value__sum|intcomma }}</td>
+                                    {% endif %}
+                                    </tr>
+                            </tbody>
+                </table>
+                <div class="alert alert-info">
+                    <strong><h4>Total Product Value for {{ category|capfirst }} : ₦{{ product_value_total_y.product_value__sum|intcomma }}</h4></strong>
+                </div>
+
+</div>
+
+{% endblock content %}

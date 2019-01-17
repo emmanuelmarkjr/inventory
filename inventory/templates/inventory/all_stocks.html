@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mytags %}
+{% block title %}Inventory - All Stocks{% endblock title %}
+{% block content %}
+
+    <div class="container">
+    {% include 'side_menu.html' %}
+        <center><h4>All Stocks</h4>
+    </center>
+        <div class="col-md-9">
+            {% if messages %}
+                <ul class="list-unstyled messages">
+                      {% for message in messages %}
+                        {% get_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+                        <center class="alert alert-{{ alert_tag }} alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            {{ message }}
+                        </center>
+                      {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {% if orders %}
+            <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff">
+                    <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>State</th>
+                          <th>Ginger Me</th>
+                          <th>Cocoa My Koko</th>
+                          <th>Green With Envy</th>
+                          <th>Inighe</th>
+                          <th>La Vida Loca</th>
+                          <th>Nutty By Nature</th>
+                          <th>Triple Threat</th>
+                           <th>Actions</th>
+                      </tr>
+                    </thead>
+                            <tbody>
+                            {% for order in orderss %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.name|upper }}</td>
+                                    <td>{{ order.ginger_me }} <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="ginger_me">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.cocoa_my_koko }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="cocoa_my_koko">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.green_with_envy }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="green_with_envy">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.inighe }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="inighe">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.la_vida_loca }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="la_vida_loca">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.nutty_by_nature }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="nutty_by_nature">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+                                    <td>{{ order.triple_threat }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="triple_threat">
+                                                                            <input type="submit" name="add" class="btn-xs btn-success" value="Add Stock">
+                                                                            <input type="submit" name="remove" class="btn-xs btn-danger" value="Remove Stock">
+                                                                        </form></td>
+
+                                                                        <td>₦{{ order.total }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="totalamount">
+                                                                            <input type="submit" name="total" class="btn-xs btn-success" value="Total Paid">
+                                                                        </form></td>
+                                                                        <td>{{ order.remarks }}  <form action="{% url 'add_stock' state=order.name|upper id=order.id %}" method="get">
+                                                                                <input type="text" style="width:75px;height:20px" name="remarksname">
+                                                                            <input type="submit" name="remarks" class="btn-xs btn-success" value="Add Remarks">
+                                                                        </form></td>
+                                    {% if request.user.is_active and request.user.is_staff %}
+                                    <!--<a href="#" class="btn btn-success btn-xs">Add Stock</a></td>-->
+                                    <!--<a href="#" class="btn btn-success btn-xs">Remove Stock</a></td>-->
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if orderss.has_previous %}
+                            <a href="?page={{ orderss.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ orderss.number }} of {{ orderss.paginator.num_pages }}.
+                        </span>
+
+                        {% if orderss.has_next %}
+                            <a href="?page={{ orderss.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-danger col-sm-9">
+                <center><p><strong>Oops!!!....Sorry</strong> No Stocks At The Moment, You can Add Some Stocks and check again</p></center>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

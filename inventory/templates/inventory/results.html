@@ -1,0 +1,19 @@
+{% if results|length %}
+    <table><br>
+         <div class="alert alert-success">
+             <center><strong>Yaay!!! Found {{ results|length }} entries in the inventory system</strong></center>
+         </div>
+
+            <ul class="list-group">
+                {% for result in results %}
+                        <center><a href="{% url 'order' id=result.id %}" class="list-group-item"><strong>{{ result.id }}.</strong>&nbsp&nbsp {{ result.cust_name }} &nbsp&nbsp {{ result.phone_no }}
+                        &nbsp&nbsp{{ result.product_value }}&nbsp&nbsp {{ result.user }}&nbsp&nbsp {{ result.product_quant }}&nbsp&nbsp {{ result.state }} &nbsp&nbsp{{ result.date }}
+                            {{ result.time }}&nbsp&nbsp {{ result.coms_exec }}&nbsp&nbsp <strong>{{ result.category|upper }}</strong></a></center>
+                {% endfor %}
+            </ul>
+    </table>
+{% else %}<br/>
+	<div class="alert alert-danger">
+        <center><p>Your search yielded no results, try again with a better keyword</p></center>
+	</div>
+{% endif %}

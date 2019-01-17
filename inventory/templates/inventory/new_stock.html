@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load mytags %}
+{% block title %}Inventory - New Stock Entry{% endblock title %}
+{% block content %}
+
+    <div class="container">
+    {% include 'side_menu.html' %}
+    <center><h4> New Stock Entry</h4></center>
+        <div class="col-sm-8">
+            {% if messages %}
+                <ul class="list-unstyled messages">
+                      {% for message in messages %}
+                        {% get_bootstrap_alert_msg_css_name message.tags as alert_tag %}
+                        <center class="alert alert-{{ alert_tag }}">{{ message }}</center>
+                      {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="col-sm-8 col-md-offset-1">
+        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="col-sm-6">
+                                State:
+                                <div class="form-group">
+                                    {% render_field form.name class="form-control" placeholder=form.name.label %}
+                                    {{ form.name.errors }}
+                                </div>
+                                Ginger Me:
+                                <div class="form-group">
+                                    {% render_field form.ginger_me class="form-control" placeholder=form.ginger_me.label %}
+                                    {{ form.ginger_me.errors }}
+                                </div>
+                                Cocoa My Koko:
+                                <div class="form-group">
+                                    {% render_field form.cocoa_my_koko class="form-control" placeholder=form.cocoa_my_koko.label %}
+                                    {{ form.cocoa_my_koko.errors }}
+                                </div>
+                                Green With Envy:
+                                <div class="form-group">
+                                    {% render_field form.green_with_envy class="form-control" placeholder=form.green_with_envy.label %}
+                                    {{ form.green_with_envy.errors }}
+                                </div>
+                                Inighe:
+                                <div class="form-group">
+                                    {% render_field form.inighe class="form-control" placeholder=form.inighe.label %}
+                                    {{ form.inighe.errors }}
+                                </div>
+
+                                La Vida Loca:
+                                <div class="form-group">
+                                    {% render_field form.la_vida_loca class="form-control" placeholder=form.la_vida_loca.label %}
+                                    {{ form.la_vida_loca.errors }}
+                                </div>
+                                 Nutty By Nature:
+                                <div class="form-group">
+                                    {% render_field form.nutty_by_nature class="form-control" placeholder=form.nutty_by_nature.label %}
+                                    {{ form.nutty_by_nature.errors }}
+                                </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                Triple Threat:
+                                <div class="form-group">
+                                    {% render_field form.triple_threat class="form-control" placeholder=form.triple_threat.label %}
+                                    {{ form.triple_threat.errors }}
+                                </div>
+                            </div>
+                           <div class="col-sm-12">
+                                <input class="btn btn-lg btn-success" type="submit" value="Submit Stock Entry" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                        </form>
+        </div>
+    </div>
+{% endblock content %}

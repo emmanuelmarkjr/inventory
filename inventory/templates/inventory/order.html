@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mytags %}
+{% block title %}Inventory - Order Details{% endblock title %}
+{% block content %}
+    <div class="container">
+    {% include 'side_menu.html' %}
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">{{ order_details.cust_name|capfirst }} Order</h3>
+                    </div>
+                    <div class="panel-body">
+                        <strong>ORDER STATUS: {{ order_details.order_status }} - {{ order_details.status }}<br/><br/></strong>
+                        Comments:{{ order_details.comment }}<br><br>
+                        ORDER CODE: {{ order_details.id }} <br/><br/>
+                        Entry By: {{ order_details.user }} <br/><br/>
+                        Address: {{ order_details.address }}<br/><br/>
+                        Product Quantity: {{ order_details.product_quant }}<br/><br/>
+                        Product Value: {{ order_details.product_value }}<br/><br/>
+                        Time Created: {{ order_details.time }}<br/><br/>
+                        Date Created: {{ order_details.date }}<br/><br/>
+                        Phone Number: {{ order_details.phone_no }}<br/><br/>
+                        State: {{ order_details.state }}<br/><br/>
+                        Category: {{ order_details.category|capfirst }}<br/><br/>
+                        <!--Comms Exec: {{ order_details.coms_exec }}<br/><br/>-->
+                        {% if order_details.amount_paid != 0  %}
+                            <div class="alert alert-info">
+                            {{ order_details.cust_name|capfirst }}'s Order has been Confirmed on {{ order_details.date_paid }} by {{ order_details.user }}
+                                <strong><br/>Details Below<br/>
+                                Amount Paid: {{ order_details.amount_paid }}<br/>
+                                Delivery Person: {{ order_details.d_person }}<br/>
+                                Date Paid: {{ order_details.date_paid }}</strong>
+                            </div>
+                        {% else %}
+                            {% if request.user.is_superuser or is_entry %}
+                            <a style="float: right" href="{% url 'edit_order' category=order_details.category|cut:" "|lower  id=order_details.id %}" class="btn btn-primary btn-lg">Edit</a>
+                            <a style="float: right" href="{% url 'delete_order' category=order_details.category|cut:" "|lower id=order_details.id %}?next={{ request.META.HTTP_REFERER }}" class="btn btn-danger btn-lg">Delete</a>
+                            {% elif request.user.is_staff %}
+                            <a style="float: right" href="{% url 'confirm_order' category=order_details.category|cut:" "|lower id=order_details.id %}" class="btn btn-primary btn-ls">Confirm</a
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                  </div>
+            </div>
+    </div>
+{% endblock content %}

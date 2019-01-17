@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mytags %}
+{% block title %}Inventory - Lagos Orders{% endblock title %}
+{% block content %}
+    <div class="container">
+        <img src="data:image/png;base64,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"/>
+        <br/>
+    <center><p>Lagos Orders</p>
+    </center>
+        {% if lagos_orders %}
+            <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          <th>Cust ID</th>
+                          <th>Category</th>
+                          <th>Customer Name</th>
+                          <th>Address</th>
+                          <th>Phone</th>
+                          <th>Product Value</th>
+                          <th>Product Quantity</th>
+                          <th>Coms Exec</th>
+                          <th>Location</th>
+                          <!--<th>Status</th>-->
+                          <th>Date</th>
+                          <!--<th>Time</th>
+                          <th>Entry User</th>-->
+                          <!--<th>Action</th>-->
+                      </tr>
+                    </thead>
+                            <tbody>
+                            {% for order in lagos_orders %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.category|lower }}</td>
+                                    <td>{{ order.cust_name }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.phone_no }}</td>
+                                    <td>{{ order.product_value }}</td>
+                                    <td>{{ order.product_quant }}</td>
+                                    <td>{{ order.coms_exec }}</td>
+                                    <td>{{ order.state }}</td>
+                                    <!--<td>{{ order.order_status }}</td>-->
+                                    <td>{{ order.date }}</td>
+                                    <!--<td>{{ order.time }}</td>
+                                    <td>{{ order.user }}</td>-->
+                                    <!--<td><a href="{% url 'order' id=order.id %}" class="btn btn-warning btn-xs">View</a><br/>{% if order.order_status != "READY" %}
+                                    <a href="{% url 'order_status' id=order.id %}" class="btn btn-success btn-xs">Place Status</a>{% endif %}
+                                    </td>-->
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                </table>
+                <!--<div class="pagination">
+                    <span class="step-links">
+                        {% if orderss.has_previous %}
+                            <a href="?page={{ orderss.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ orderss.number }} of {{ orderss.paginator.num_pages }}.
+                        </span>
+
+                        {% if orderss.has_next %}
+                            <a href="?page={{ orderss.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>-->
+        {% else %}
+            <!--<div class="alert alert-danger col-sm-8">
+                <center><p><strong>Oops!!!....Sorry</strong> No Lagos Orders At The Moment, You can Check Back Some Other Time</p></center>
+            </div>-->
+        {% endif %}
+    </div>
+{% endblock content %}

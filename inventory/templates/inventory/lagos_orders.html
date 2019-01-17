@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load mytags %}
+{% block title %}Inventory - Lagos Orders{% endblock title %}
+{% block content %}
+
+    <div class="container">
+    {% include 'side_menu.html' %}
+    <center><h4>Lagos Orders</h4>
+                                                                        <form action="" method="get">
+                                                                            <label for="from">Enter Location</label>
+                                                                                <input type="text" name="location">
+                                                                            <input type="submit" class="btn-small btn success" value="Submit">
+                                                                        </form><br/>
+                                                                        <a href="{% url 'ready_lagos_orders_print' %}" class="btn btn-warning btn-xs">View and Download PDF</a>
+    </center>
+        {% if orders %}
+            <div class="col-md-9">
+                <table class="table table-striped" style="background-color: #ffffff;" >
+                    <thead>
+                      <tr>
+                          <th>Cust ID</th>
+                          <th>Category</th>
+                          <th>Customer Name</th>
+                          <th>Address</th>
+                          <th>Phone</th>
+                          <th>Product Value</th>
+                          <th>Product Quantity</th>
+                          <th>Coms Exec</th>
+                          <th>Location</th>
+                          <th>Status</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Entry User</th>
+                          <th>Action</th>
+                      </tr>
+                    </thead>
+                            <tbody>
+                            {% for order in orderss %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.category|lower }}</td>
+                                    <td>{{ order.cust_name }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.phone_no }}</td>
+                                    <td>{{ order.product_value }}</td>
+                                    <td>{{ order.product_quant }}</td>
+                                    <td>{{ order.coms_exec }}</td>
+                                    <td>{{ order.state }}</td>
+                                    <td>{{ order.order_status }}</td>
+                                    <td>{{ order.date }}</td>
+                                    <td>{{ order.time }}</td>
+                                    <td>{{ order.user }}</td>
+                                    <td><a href="{% url 'order' id=order.id %}" class="btn btn-warning btn-xs">View</a><br/>{% if order.order_status != "READY" %}
+                                    <a href="{% url 'order_status' id=order.id %}" class="btn btn-success btn-xs">Place Status</a>{% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                </table>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if orderss.has_previous %}
+                            <a href="?page={{ orderss.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ orderss.number }} of {{ orderss.paginator.num_pages }}.
+                        </span>
+
+                        {% if orderss.has_next %}
+                            <a href="?page={{ orderss.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-danger col-sm-8">
+                <center><p><strong>Oops!!!....Sorry</strong> No Lagos Orders At The Moment, You can Check Back Some Other Time</p></center>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

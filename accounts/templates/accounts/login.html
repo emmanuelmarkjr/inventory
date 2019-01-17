@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Inventory -  Login{% endblock title %}
+
+{% block content %}
+             <div class="container" style="padding-top: 40px">
+                <div class="form-signin">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <center>Your username and password didn't match. Please try again.</center></div>
+                    {% endif %}
+                    <center><h4>Please sign in</h4></center>
+                        <form method="post" action="{% url 'login' %}" class="form-signin">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.username }}
+                                {{ form.username.errors }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password }}
+                                {{ form.password.errors }}
+                            </div>
+                                <div class="form-group">
+                                    <center><input class="btn btn-lg btn-primary btn-block" type="submit" value="login" /></center>
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </div>
+                        </form>
+                </div>
+             </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+{% if not user.is_authenticated %}
+$("ul.nav.navbar-nav.navbar-right").css("display","none");
+{% endif %}
+</script>
+
+{% endblock %}
